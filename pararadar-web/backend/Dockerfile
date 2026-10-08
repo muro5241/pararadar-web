@@ -12,7 +12,7 @@ RUN --mount=type=secret,id=pip_ca \
     else \
       python -m pip install --no-cache-dir --require-hashes -r requirements.lock; \
     fi
-COPY --chown=10001:10001 app.py settings.py store.py tiktok.py ./
+COPY --chown=10001:10001 app.py settings.py store.py tiktok.py nvidia.py ./
 COPY --chown=10001:10001 templates ./templates
 COPY --chown=10001:10001 assets ./assets
 COPY scripts/entrypoint.sh /usr/local/bin/pararadar-start

@@ -8,6 +8,7 @@ from cryptography.fernet import Fernet
 from fastapi.testclient import TestClient
 
 from app import COOKIE, STATE_COOKIE, create_app
+from nvidia import NvidiaSettings
 from settings import Settings
 
 BASE = "https://backend.example.test"
@@ -120,7 +121,7 @@ def provider():
 @pytest.fixture
 def client(settings, provider):
     upstream = httpx.AsyncClient(transport=httpx.MockTransport(provider.handler))
-    app = create_app(settings, upstream)
+    app = create_app(settings, upstream, nvidia_settings=NvidiaSettings())
     with TestClient(app, base_url=BASE, follow_redirects=False) as client:
         yield client
 

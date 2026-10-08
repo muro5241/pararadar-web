@@ -5,6 +5,16 @@
 <a href="/auth/tiktok/start" id="connect">TikTok hesabını bağla</a>
 <section id="studio" hidden>
 <p id="creator"></p><button id="refresh" type="button">Yetkiyi yenile</button> <button id="logout" type="button">Oturumu kapat</button> <button id="disconnect" type="button">TikTok bağlantısını kaldır ve yerel verileri sil</button>
+<h2>Türkçe içerik taslağı</h2>
+<p id="generation-note">NVIDIA içerik üretimi için sunucu yapılandırması kontrol ediliyor.</p>
+<form id="generation-form">
+<label>Konu<input id="generation-topic" maxlength="300" required></label>
+<label>Alan<select id="generation-category"><option value="finance">Finans</option><option value="crypto">Kripto</option></select></label>
+<label>Süre<select id="generation-duration"><option value="30">30 saniye</option><option value="60" selected>60 saniye</option><option value="90">90 saniye</option></select></label>
+<label>Ek bilgiler<textarea id="generation-context" maxlength="1000"></textarea></label>
+<button id="generate" type="submit" disabled>Taslak üret</button>
+</form>
+<div id="generation-result" hidden><label>Senaryo<textarea id="generated-script" rows="10"></textarea></label><h3>Başlık önerileri</h3><ul id="generated-titles"></ul><label>Açıklama<textarea id="generated-description" rows="5"></textarea></label><p id="generated-tags"></p><p id="generated-disclaimer"></p></div>
 <form id="post-form">
 <label>Video (MP4)<input id="video" type="file" accept="video/mp4" required></label><video id="preview" controls hidden></video>
 <label>İşlem<select id="mode"><option value="direct">Doğrudan TikTok'a gönder</option><option value="inbox">TikTok gelen kutusuna taslak yükle</option></select></label>

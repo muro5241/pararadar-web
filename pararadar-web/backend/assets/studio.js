@@ -107,9 +107,31 @@ for (const id of ['refresh','logout','disconnect']) el(id).addEventListener('cli
 el('check-jobs').addEventListener('click', () => loadJobs(true).catch(error => tell(error.message)));
 (async () => {
   try { const s = await api('/api/session'); csrf = s.csrf_token; allowPublic = s.allow_public_posts; el('studio').hidden = false; el('connect').textContent = 'TikTok hesabını yeniden bağla';
+    el('generate').disabled = !s.nvidia_available;
+    el('generation-note').textContent = s.nvidia_available ? 'Taslakları yayımlamadan önce doğrulayın. Sınırlar: 5/dakika, 20/gün/hesap, 100/gün/sunucu. Üretim video göndermez.' : 'NVIDIA içerik üretimi henüz yapılandırılmamış.';
     await loadJobs();
     try { await loadCreator(); } catch(error) {
       try { const user = await api('/api/profile'); el('creator').textContent = `TikTok hesabı: ${user.display_name}`; } catch(profileError) { tell(profileError.message); }
       tell(`${error.message}. Gelen kutusu taslağı için video.upload yetkisi ayrıca kullanılabilir.`); el('mode').value = 'inbox'; syncForm(); }
   } catch(error) { if (!error.message.includes('Connect your TikTok')) tell(error.message); }
 })();
+
+let generationKey = null, generating = false;
+el('generation-form').addEventListener('input', () => { generationKey = null; });
+el('generation-form').addEventListener('submit', async event => {
+  event.preventDefault(); if (generating) return;
+  generating = true; el('generate').disabled = true;
+  generationKey ||= crypto.randomUUID();
+  try {
+    const result = await api('/api/content/generate', {method:'POST', headers:{'Content-Type':'application/json', 'Idempotency-Key':generationKey}, body:JSON.stringify({topic:el('generation-topic').value, category:el('generation-category').value, duration_seconds:Number(el('generation-duration').value), context:el('generation-context').value})});
+    el('generated-script').value = result.script;
+    el('generated-description').value = result.description;
+    el('generated-titles').replaceChildren();
+    for (const title of result.titles) { const item = document.createElement('li'); item.textContent = title; el('generated-titles').append(item); }
+    el('generated-tags').textContent = result.hashtags.join(' ');
+    el('generated-disclaimer').textContent = result.disclaimer;
+    el('generation-result').hidden = false;
+    tell('Taslak hazır. Bilgileri inceleyin; video gönderilmedi.');
+  } catch(error) { tell(error.message); }
+  finally { generating = false; el('generate').disabled = false; }
+});
