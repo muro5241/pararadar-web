@@ -1,0 +1,31 @@
+# Create a NEW backend service. Do not replace the current static site.
+# A persistent disk requires a paid Render plan; review pricing before provisioning.
+services:
+  - type: web
+    name: pararadar-tiktok-backend
+    runtime: docker
+    plan: starter
+    rootDir: pararadar-web/backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /ready
+    disk:
+      name: pararadar-private-data
+      mountPath: /var/lib/pararadar
+      sizeGB: 1
+    envVars:
+      - key: TIKTOK_CLIENT_KEY
+        sync: false
+      - key: TIKTOK_CLIENT_SECRET
+        sync: false
+      - key: TOKEN_ENCRYPTION_KEY
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: TIKTOK_REDIRECT_URI
+        sync: false
+      - key: DATABASE_PATH
+        value: /var/lib/pararadar/tokens.sqlite3
+      - key: ALLOW_PUBLIC_POSTS
+        value: "false"
+      - key: MAX_VIDEO_BYTES
+        value: "1073741824"

@@ -1,0 +1,27 @@
+name: Backend tests
+on:
+  pull_request:
+    paths: ["pararadar-web/backend/**", ".github/workflows/backend.yml"]
+  push:
+    paths: ["pararadar-web/backend/**", ".github/workflows/backend.yml"]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pararadar-web/backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pararadar-web/backend/requirements.lock
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: python -m pip install --require-hashes -r requirements.lock
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m playwright install --with-deps chromium
+      - run: ruff check . && ruff format --check .
+      - run: pytest -q --cov=app --cov=tiktok --cov=store --cov=settings --cov-report=term-missing --cov-fail-under=90
