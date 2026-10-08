@@ -24,4 +24,4 @@ jobs:
       - run: python -m pip install -r requirements-dev.txt
       - run: python -m playwright install --with-deps chromium
       - run: ruff check . && ruff format --check .
-      - run: pytest -q --cov=app --cov=tiktok --cov=store --cov=settings --cov-report=term-missing --cov-fail-under=90
+      - run: python -m pytest -q --cov=app --cov=tiktok --cov=store --cov=settings --cov-report=term-missing --cov-fail-under=90
