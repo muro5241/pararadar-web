@@ -1,0 +1,23 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ParaRadar TikTok Stüdyosu</title><link rel="stylesheet" href="/assets/studio.css"><script src="/assets/studio.js" defer></script></head><body>
+<main><h1>ParaRadar TikTok Stüdyosu</h1><p>Bu stüdyo tanıtım sitesinden ayrı çalışır. Videonuzu inceleyip paylaşım iznini siz verirsiniz.</p>
+{% if not configured %}<p role="alert">Sunucu TikTok bağlantısı için henüz yapılandırılmamış. Yönetici HTTPS adresini ve gizli anahtarları sunucu ayarlarına eklemeli.</p>{% endif %}
+<p id="notice" role="status" aria-live="polite"></p>
+<a href="/auth/tiktok/start" id="connect">TikTok hesabını bağla</a>
+<section id="studio" hidden>
+<p id="creator"></p><button id="refresh" type="button">Yetkiyi yenile</button> <button id="logout" type="button">Oturumu kapat</button> <button id="disconnect" type="button">TikTok bağlantısını kaldır ve yerel verileri sil</button>
+<form id="post-form">
+<label>Video (MP4)<input id="video" type="file" accept="video/mp4" required></label><video id="preview" controls hidden></video>
+<label>İşlem<select id="mode"><option value="direct">Doğrudan TikTok'a gönder</option><option value="inbox">TikTok gelen kutusuna taslak yükle</option></select></label>
+<div id="direct-options"><label>Başlık<textarea id="title" maxlength="2200"></textarea></label>
+<label>Görünürlük<select id="privacy" required><option value="">Seçiniz</option></select></label>
+<p>İncelenmemiş TikTok uygulamaları yalnızca “Sadece ben” paylaşımını destekleyebilir. Bu sunucuda diğer seçenekler ayrıca yönetici izni gerektirir.</p>
+<label><input id="comment" type="checkbox">Yorumlara izin ver</label><label><input id="duet" type="checkbox">Düete izin ver</label><label><input id="stitch" type="checkbox">Ekleme (Stitch) özelliğine izin ver</label>
+<label><input id="commercial" type="checkbox">Ticari içerik açıklaması ekle</label><div id="commercial-options" hidden><label><input id="organic" type="checkbox">Kendi markamı tanıtıyorum</label><label><input id="branded" type="checkbox">Üçüncü taraf markalı içerik / ücretli ortaklık</label>
+<p id="commercial-notice" hidden><span id="commercial-label"></span> Ticari içerik açıklaması TikTok gönderisine uygulanacaktır. Markalı içerik “Sadece ben” olarak paylaşılamaz. TikTok'un <a href="https://www.tiktok.com/legal/page/global/bc-policy/en" target="_blank" rel="noopener noreferrer">Markalı İçerik Politikası</a>'nı kabul ediyorum.</p>
+</div><label><input id="aigc" type="checkbox">Yapay zekâ ile üretilmiş içerik etiketi</label>
+<label id="public-label" hidden><input id="public-confirm" type="checkbox">Seçtiğim görünürlükle bu videonun diğer kişilere açılmasını açıkça onaylıyorum.</label></div>
+<label><input id="consent" type="checkbox" required>Önizlemeyi inceledim; bu videonun seçtiğim işlemle TikTok'a gönderilmesini ve TikTok <a href="https://www.tiktok.com/legal/page/global/music-usage-confirmation/en" target="_blank" rel="noopener noreferrer">Müzik Kullanım Onayı</a>'nı kabul ediyorum.</label>
+<p id="inbox-note" hidden>Taslak yüklemek videoyu yayımlamaz. TikTok bildirimini açıp düzenleme ve paylaşım işlemini orada tamamlamalısınız.</p>
+<button id="submit" type="submit">Seçtiğim işlemi onayla ve gönder</button>
+</form><h2>Gönderim durumu</h2><p>“İşleniyor” sonucu yayımlandığı anlamına gelmez. Durum kontrolü yeni video paylaşmaz.</p><button id="check-jobs" type="button">Durumları kontrol et</button><ul id="jobs"></ul>
+</section></main></body></html>
