@@ -22,6 +22,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 
+from nvidia import ContentRequest, GenerationLedger, Nvidia, NvidiaSettings
 from settings import Settings
 from store import Store
 from tiktok import AUTH_URL, TikTok
@@ -101,9 +102,13 @@ class PostOptions(BaseModel):
     model_config = {"extra": "forbid"}
 
 
-def create_app(settings=None, http_client=None):
+def create_app(
+    settings=None, http_client=None, nvidia_settings=None, nvidia_http_client=None
+):
     settings = settings or Settings.from_env()
     settings.validate()
+    nvidia_settings = nvidia_settings or NvidiaSettings.from_env()
+    nvidia_settings.validate()
 
     @asynccontextmanager
     async def lifespan(app):
@@ -118,7 +123,15 @@ def create_app(settings=None, http_client=None):
         app.state.tiktok = TikTok(settings, app.state.store, client)
         app.state.upload_lock = asyncio.Semaphore(2)
         app.state.status_checks = {}
+        nvidia_client = nvidia_http_client or httpx.AsyncClient(follow_redirects=False)
+        app.state.nvidia = Nvidia(nvidia_settings, nvidia_client)
+        app.state.generations = (
+            GenerationLedger(app.state.store) if app.state.store else None
+        )
+        app.state.generation_lock = asyncio.Semaphore(2)
         yield
+        if nvidia_http_client is None:
+            await nvidia_client.aclose()
         if http_client is None:
             await client.aclose()
 
@@ -132,18 +145,23 @@ def create_app(settings=None, http_client=None):
     @app.middleware("http")
     async def security(request, call_next):
         # Reject unauthorized upload bodies before FastAPI's multipart parser writes them to disk.
-        if request.url.path == "/api/videos" and request.method == "POST":
+        if (
+            request.url.path in ("/api/videos", "/api/content/generate")
+            and request.method == "POST"
+        ):
             try:
                 session(request, mutate=True)
             except HTTPException as exc:
                 return JSONResponse({"detail": exc.detail}, status_code=exc.status_code)
+        body_limit = (
+            8192
+            if request.url.path == "/api/content/generate"
+            else settings.max_video_bytes + 1024 * 1024
+        )
         length = request.headers.get("content-length")
         if length:
             try:
-                if (
-                    int(length) < 0
-                    or int(length) > settings.max_video_bytes + 1024 * 1024
-                ):
+                if int(length) < 0 or int(length) > body_limit:
                     return JSONResponse(
                         {"detail": "Request body too large"}, status_code=413
                     )
@@ -159,13 +177,13 @@ def create_app(settings=None, http_client=None):
             nonlocal received
             message = await original_receive()
             received += len(message.get("body", b""))
-            if received > settings.max_video_bytes + 1024 * 1024:
+            if received > body_limit:
                 raise HTTPException(413, "Request body too large")
             return message
 
         request._receive = limited_receive
         response = await call_next(request)
-        if received > settings.max_video_bytes + 1024 * 1024:
+        if received > body_limit:
             # Multipart parsers may normalize receive errors to 400; preserve our size-limit contract.
             response = JSONResponse(
                 {"detail": "Request body too large"}, status_code=413
@@ -208,6 +226,20 @@ def create_app(settings=None, http_client=None):
             "result": result,
             "created": job["created"],
         }
+
+    @app.post("/api/content/generate")
+    async def generate_content(request: Request, content: ContentRequest):
+        owner = session(request, mutate=True)["account"]
+        if not nvidia_settings.api_key:
+            raise HTTPException(503, "NVIDIA generation is not configured")
+        async with app.state.generation_lock:
+            key = request.headers.get("idempotency-key", "")
+            cached = app.state.generations.reserve(owner, key, content)
+            if cached is not None:
+                return cached
+            result = await app.state.nvidia.generate(content)
+            app.state.generations.complete(owner, key, result)
+            return result
 
     @app.get("/health")
     def health():
@@ -323,6 +355,7 @@ def create_app(settings=None, http_client=None):
             "authorized": True,
             "csrf_token": s["csrf"],
             "allow_public_posts": settings.allow_public_posts,
+            "nvidia_available": bool(nvidia_settings.api_key),
         }
 
     @app.get("/api/profile")
@@ -357,6 +390,7 @@ def create_app(settings=None, http_client=None):
         s = session(request, mutate=True)
         # Keep local credentials if revocation fails so the operation can be retried.
         await app.state.tiktok.revoke(s["account"])
+        app.state.generations.erase_content(s["account"])
         store().disconnect(s["account"])
         response = JSONResponse({"disconnected": True})
         response.delete_cookie(

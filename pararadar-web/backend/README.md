@@ -78,3 +78,9 @@ See [REVIEW_DEMO.md](REVIEW_DEMO.md) for safe real Sandbox validation and record
 TikTok's [Content Sharing Guidelines](https://developers.tiktok.com/doc/content-sharing-guidelines) explicitly exclude internal/private account-management utilities from Direct Post audit eligibility. Technical completion and a recording cannot guarantee approval. ParaRadar needs an accurately described, eligible creator-facing product and truthful published privacy/terms before requesting production review. Existing informational-site policies describe a static site; they are intentionally preserved here and require owner review before exposing the integration publicly.
 
 Official protocol references checked during implementation: [Web Login](https://developers.tiktok.com/doc/login-kit-web), [token management](https://developers.tiktok.com/doc/oauth-user-access-token-management), [creator query](https://developers.tiktok.com/doc/content-posting-api-reference-query-creator-info), [Direct Post](https://developers.tiktok.com/doc/content-posting-api-reference-direct-post), [Inbox upload](https://developers.tiktok.com/doc/content-posting-api-reference-upload-video), [media transfer](https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide), [status](https://developers.tiktok.com/doc/content-posting-api-reference-get-video-status).
+
+## Optional NVIDIA content generation
+
+See [NVIDIA.md](NVIDIA.md) for official sources, secure environment configuration,
+authenticated Turkish draft generation, usage limits, CLI and live-test instructions.
+The feature does not upload or publish videos and does not require a key for mock tests.

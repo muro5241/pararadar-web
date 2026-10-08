@@ -179,3 +179,21 @@ def test_browser_refresh_and_logout(page):
     page.locator("#logout").click()
     expect(page.locator("#connect")).to_be_visible()
     expect(page.locator("#studio")).not_to_be_visible()
+
+
+def test_browser_nvidia_generation_preserves_post_consent(page):
+    before_jobs = page.locator("#jobs li").count()
+    page.locator("#generation-topic").fill("Kripto riskleri")
+    page.locator("#generation-category").select_option("crypto")
+    page.locator("#generate").click()
+    expect(page.locator("#generation-result")).to_be_visible()
+    expect(page.locator("#generated-script")).to_have_value(
+        "Kripto varlıklarda risk yönetimini öğrenelim. Dalgalanma ve kayıp riski vardır."
+    )
+    expect(page.locator("#generated-titles li")).to_have_count(3)
+    expect(page.locator("#generated-disclaimer")).to_contain_text(
+        "yatırım tavsiyesi değildir"
+    )
+    expect(page.locator("#consent")).not_to_be_checked()
+    expect(page.locator("#title")).to_have_value("")
+    expect(page.locator("#jobs li")).to_have_count(before_jobs)
