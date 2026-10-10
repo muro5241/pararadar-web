@@ -1,10 +1,32 @@
-﻿param([string]$ProjectPath = 'C:\Users\murat\OneDrive\Masaüstü\kripto_borsa_bot')
+﻿param(
+  [string]$ProjectPath = 'C:\Users\murat\OneDrive\Masaüstü\kripto_borsa_bot',
+  [switch]$CheckOnly
+)
 $ErrorActionPreference = 'Stop'
 $Target = Join-Path $ProjectPath 'pararadar_service'
 $Python = Join-Path $Target '.venv\Scripts\python.exe'
-if (-not (Test-Path -LiteralPath $Python)) { throw 'Existing ParaRadar installation not found. Production was not changed.' }
+$PythonArgs = @()
+$Standalone = -not (Test-Path -LiteralPath $Python)
+if ($Standalone) {
+  # A legacy video producer need not have pararadar_service or a production venv.
+  $Target = Join-Path $env:LOCALAPPDATA 'ParaRadar\tiktok_service'
+  $Launcher = Get-Command py -CommandType Application -ErrorAction SilentlyContinue
+  $SystemPython = Get-Command python -CommandType Application -ErrorAction SilentlyContinue
+  if ($Launcher) { $Python = $Launcher.Source; $PythonArgs = @('-3') }
+  elseif ($SystemPython) { $Python = $SystemPython.Source }
+  else { throw 'Python 3.11+ is required. Install Python, reopen PowerShell, and run this installer again.' }
+}
+& $Python @PythonArgs -c "import sys;assert sys.version_info >= (3,11), 'Python 3.11+ is required'"
+if ($LASTEXITCODE -ne 0) { throw 'Python 3.11+ is required; no production files were changed.' }
+if ($CheckOnly) {
+  Write-Host ("TikTok target: " + $Target)
+  Write-Host ("Standalone: " + $Standalone)
+  Write-Host 'Python check passed. No files or tasks were changed.'
+  return
+}
+New-Item -ItemType Directory -Path $Target -Force | Out-Null
 $Stamp = Get-Date -Format 'yyyyMMdd_HHmmss_fff'
-$Backup = Join-Path $ProjectPath "pararadar_yedek\tiktok_$Stamp"
+$Backup = if ($Standalone) { Join-Path (Split-Path $Target -Parent) "backups\tiktok_$Stamp" } else { Join-Path $ProjectPath "pararadar_yedek\tiktok_$Stamp" }
 New-Item -ItemType Directory -Path $Backup -Force | Out-Null
 foreach ($Name in @('tiktok_windows.py','tiktok_backend')) {
   $Previous = Join-Path $Target $Name
@@ -13,7 +35,7 @@ foreach ($Name in @('tiktok_windows.py','tiktok_backend')) {
 # A separate environment avoids upgrading any video-production dependencies.
 $TikTokVenv = Join-Path $Target '.tiktok-venv'
 if (-not (Test-Path (Join-Path $TikTokVenv 'Scripts\python.exe'))) {
-  & $Python -m venv $TikTokVenv
+  & $Python @PythonArgs -m venv $TikTokVenv
   if ($LASTEXITCODE -ne 0) { throw 'TikTok environment creation failed' }
 }
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'tiktok_windows.py') -Destination $Target -Force

@@ -16,8 +16,10 @@ Bu entegrasyon `fix/pararadar-ascii-paths` dalındaki çalışan üretim sistemi
 powershell -NoProfile -ExecutionPolicy Bypass -File .\install_tiktok.ps1
 ```
 
-Başka proje klasörü için `-ProjectPath 'C:\proje'` ekleyin. Önceden çalışan
-`pararadar_service\.venv\Scripts\python.exe` bulunmalıdır. TikTok bağımlılıkları
+Başka proje klasörü için `-ProjectPath 'C:\proje'` ekleyin. Mevcut
+`pararadar_service\.venv\Scripts\python.exe` varsa bu kurulumun yanına eklenir.
+Yoksa sistemdeki Python 3.11+ ile `%LOCALAPPDATA%\ParaRadar\tiktok_service`
+altına bağımsız kurulur; mevcut üretim servisi zorunlu değildir. TikTok bağımlılıkları
 ayrı `.tiktok-venv` içine kurulur; üretim bağımlılıkları yükseltilmez.
 Kurulum yalnızca `ParaRadar-TikTok` oturum açılış görevini ekler ve başlatır.
 
@@ -57,7 +59,9 @@ Stop-ScheduledTask -TaskName ParaRadar-TikTok
 Start-ScheduledTask -TaskName ParaRadar-TikTok
 ```
 
-Bu komut üretim projesinin ana klasöründe çalıştırılır. Başarılı test kaydı yoksa
+Bu komut mevcut üretim servisi yanına kurulumda üretim projesinin ana klasöründe çalıştırılır.
+Bağımsız kurulumda `%LOCALAPPDATA%\ParaRadar\tiktok_service` içindeki `.tiktok-venv`
+Pythonunu ve `tiktok_windows.py` dosyasını kullanın. Başarılı test kaydı yoksa
 kilit kaldırılmaz. Her TikTok hesabının kendi başarılı tek video kaydı gerekir.
 Herkese açık paylaşım ayrıca audit/onay ve `PUBLIC` beyanı ister; varsayılan kapalıdır.
 Her sonraki gönderi de önizleme, elle görünürlük seçimi ve kullanıcı onayı ister.

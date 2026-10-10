@@ -32,3 +32,16 @@ jobs:
           $errors = $null
           [System.Management.Automation.Language.Parser]::ParseFile("$PWD/pararadar_windows/install_tiktok.ps1", [ref]$tokens, [ref]$errors) | Out-Null
           if ($errors.Count) { $errors | Format-List; exit 1 }
+      - name: Installer supports missing production environment
+        shell: pwsh
+        run: |
+          $originalLocal = $env:LOCALAPPDATA
+          $temporary = Join-Path $env:RUNNER_TEMP ([Guid]::NewGuid().ToString())
+          try {
+            $env:LOCALAPPDATA = Join-Path $temporary 'local'
+            $output = & ./pararadar_windows/install_tiktok.ps1 -ProjectPath (Join-Path $temporary 'legacy-project') -CheckOnly 6>&1
+            $output | Write-Host
+            if ($LASTEXITCODE -ne 0) { throw 'Installer Python discovery failed' }
+            if (($output -join "`n") -notmatch 'Standalone: True') { throw 'Standalone mode was not selected' }
+            if (Test-Path -LiteralPath $temporary) { throw 'CheckOnly modified files' }
+          } finally { $env:LOCALAPPDATA = $originalLocal }
