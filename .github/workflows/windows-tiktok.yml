@@ -1,0 +1,47 @@
+name: Windows TikTok integration
+on:
+  push:
+    branches: [feat/windows-tiktok-direct-post]
+    paths: ['pararadar_windows/**', '.github/workflows/windows-tiktok.yml']
+  pull_request:
+    paths: ['pararadar_windows/**', '.github/workflows/windows-tiktok.yml']
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install FFmpeg
+        run: choco install ffmpeg --no-progress -y
+      - name: Dependencies in test environment
+        run: python -m pip install -r pararadar_windows/tiktok_backend/requirements-dev.txt Pillow python-dotenv
+      - name: TikTok contracts and real Windows DPAPI
+        working-directory: pararadar_windows/tiktok_backend
+        run: python -m pytest tests/test_oauth.py tests/test_posting.py tests/test_windows_integration.py -q
+      - name: Preserve working video production
+        working-directory: pararadar_windows
+        run: python -m unittest test_regression test_key_discovery -v
+      - name: Parse PowerShell installer without executing it
+        shell: pwsh
+        run: |
+          $tokens = $null
+          $errors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile("$PWD/pararadar_windows/install_tiktok.ps1", [ref]$tokens, [ref]$errors) | Out-Null
+          if ($errors.Count) { $errors | Format-List; exit 1 }
+      - name: Installer supports missing production environment
+        shell: pwsh
+        run: |
+          $originalLocal = $env:LOCALAPPDATA
+          $temporary = Join-Path $env:RUNNER_TEMP ([Guid]::NewGuid().ToString())
+          try {
+            $env:LOCALAPPDATA = Join-Path $temporary 'local'
+            $output = & ./pararadar_windows/install_tiktok.ps1 -ProjectPath (Join-Path $temporary 'legacy-project') -CheckOnly 6>&1
+            $output | Write-Host
+            if ($LASTEXITCODE -ne 0) { throw 'Installer Python discovery failed' }
+            if (($output -join "`n") -notmatch 'Standalone: True') { throw 'Standalone mode was not selected' }
+            if (Test-Path -LiteralPath $temporary) { throw 'CheckOnly modified files' }
+          } finally { $env:LOCALAPPDATA = $originalLocal }

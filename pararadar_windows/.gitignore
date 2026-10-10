@@ -4,3 +4,11 @@ data/
 tools/
 __pycache__/
 *.log
+
+.tiktok-venv/
+*.dpapi
+*.sqlite3
+*.sqlite3-*
+.pytest_cache/
+.ruff_cache/
+.coverage
