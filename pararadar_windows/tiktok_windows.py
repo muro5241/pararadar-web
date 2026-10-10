@@ -75,20 +75,32 @@ def protected_dir() -> Path:
     import csv
 
     sid = next(csv.reader([who.stdout.strip()]))[1]
-    # Separate private credential directory; does not alter the production data ACL.
-    subprocess.run(
-        [
-            "icacls",
-            str(base),
-            "/inheritance:r",
-            "/grant:r",
-            f"*{sid}:(OI)(CI)F",
-            "*S-1-5-18:(OI)(CI)F",
-        ],
-        capture_output=True,
-        check=True,
-        timeout=10,
-    )
+    # Replace the entire protected DACL, including pre-existing explicit entries.
+    # icacls /grant:r alone would leave explicit Administrators/Owner Rights ACEs.
+    advapi = ctypes.WinDLL("advapi32", use_last_error=True)
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    convert = advapi.ConvertStringSecurityDescriptorToSecurityDescriptorW
+    convert.argtypes = [
+        wintypes.LPCWSTR,
+        wintypes.DWORD,
+        ctypes.POINTER(ctypes.c_void_p),
+        ctypes.c_void_p,
+    ]
+    convert.restype = wintypes.BOOL
+    apply_acl = advapi.SetFileSecurityW
+    apply_acl.argtypes = [wintypes.LPCWSTR, wintypes.DWORD, ctypes.c_void_p]
+    apply_acl.restype = wintypes.BOOL
+    kernel.LocalFree.argtypes = [ctypes.c_void_p]
+    kernel.LocalFree.restype = ctypes.c_void_p
+    descriptor = ctypes.c_void_p()
+    sddl = f"D:P(A;OICI;FA;;;{sid})(A;OICI;FA;;;SY)"
+    if not convert(sddl, 1, ctypes.byref(descriptor), None):
+        raise RuntimeError("Windows private directory ACL setup failed")
+    try:
+        if not apply_acl(str(base), 0x80000004, descriptor):
+            raise RuntimeError("Windows private directory ACL setup failed")
+    finally:
+        kernel.LocalFree(descriptor)
     return base
 
 
@@ -222,9 +234,8 @@ def serve(base, config):
     logging.getLogger("httpx").setLevel(logging.WARNING)
     logging.getLogger("httpcore").setLevel(logging.WARNING)
     import uvicorn
-    from starlette.middleware.trustedhost import TrustedHostMiddleware
-
     from app import create_app
+    from starlette.middleware.trustedhost import TrustedHostMiddleware
 
     app = create_app(settings_for(base, config))
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1"])
