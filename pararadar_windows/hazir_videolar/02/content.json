@@ -1,0 +1,7 @@
+{
+  "title": "Düzenli Yatırım ve Zamanlama",
+  "script": "Yatırım dünyasında doğru zamanı beklemek çoğu zaman zordur. Amerikan beş yüz endeksi üzerinden baktığımızda piyasaların genel eğilimini görebiliriz. Grafiklerdeki aylık veriler bize uzun vadeli yükseliş trendini gösterir. Elbette bu yolculukta ara dalgalanmalar yaşanması oldukça doğaldır. Önemli olan piyasa hareketlerine rağmen düzenli kalabilmektir. Zamanlama hatasına düşmek yerine disiplinli ilerlemek stratejik bir yaklaşımdır. Ekrandaki tarihsel veriler bu genel seyri açıkça ortaya koyuyor. Süreci grafik üzerinden takip ederek mantığı kavrayabilirsiniz. Yatırım tavsiyesi değildir.",
+  "model": "google/gemma-4-31b-it",
+  "topic": "Düzenli yatırım ve zamanlama",
+  "ai_generated": true
+}

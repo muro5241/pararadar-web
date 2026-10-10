@@ -1,0 +1,7 @@
+{
+  "title": "Piyasalarda Uzun Vadeli Bakış",
+  "script": "Finansal piyasalar her zaman hareketlidir. Amerikan beş yüz endeksi buna en iyi örnektir. Grafikte gördüğünüz aylık tarihsel veriler genel eğilimi gösteriyor. Endeks uzun vadede yükseliş sergilese de yol boyunca çeşitli dalgalanmalar yaşanmıştır. Bu iniş çıkışlar piyasaların doğal bir parçasıdır. Önemli olan kısa süreli hareketlere değil, büyük resme odaklanmaktır. Tarihsel süreçteki bu değişimler yatırımcıya sabırlı olmayı öğretir. Grafikteki seyir genel piyasa davranışını özetlemektedir. Yatırım tavsiyesi değildir.",
+  "model": "google/gemma-4-31b-it",
+  "topic": "Uzun vadede dalgalanma",
+  "ai_generated": true
+}

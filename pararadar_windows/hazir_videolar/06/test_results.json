@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "checks": {
+    "portrait_9_16": true,
+    "h264_yuv420p": true,
+    "aac_audio": true,
+    "duration": true,
+    "av_sync": true,
+    "no_black_segments": true,
+    "visible_frames": true,
+    "audible_audio": true,
+    "subtitles_burned_in": true,
+    "subtitle_timeline": true
+  },
+  "duration_seconds": 50.32,
+  "resolution": [
+    720,
+    1280
+  ],
+  "fps": "25/1",
+  "audio_mean_db": -17.2,
+  "audio_peak_db": -1.1,
+  "samples": [
+    {
+      "seconds": 5.2,
+      "mean_luma": 193.08,
+      "contrast_std": 90.19,
+      "subtitle_white_pixels": 5656
+    },
+    {
+      "seconds": 24.12,
+      "mean_luma": 193.09,
+      "contrast_std": 90.19,
+      "subtitle_white_pixels": 5702
+    },
+    {
+      "seconds": 46.07,
+      "mean_luma": 193.46,
+      "contrast_std": 89.95,
+      "subtitle_white_pixels": 7052
+    }
+  ],
+  "subtitle_events": 15,
+  "speech_engine": "eSpeak NG tr (offline, synthetic)",
+  "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+}

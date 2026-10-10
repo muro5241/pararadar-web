@@ -1,0 +1,25 @@
+﻿[Script Info]
+ScriptType: v4.00+
+PlayResX: 720
+PlayResY: 1280
+WrapStyle: 2
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,DejaVu Sans,38,&H00FFFFFF,&H0000DBFF,&H00502D11,&H00502D11,-1,0,0,0,100,100,0,0,1,1,0,5,50,50,0,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:03.66,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Finansal piyasaları\Nanlamak için endeksleri
+Dialogue: 0,0:00:03.66,0:00:05.61,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}doğru okumak gerekir.
+Dialogue: 0,0:00:05.61,0:00:08.14,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Amerikan beş yüz endeksi\Nbu
+Dialogue: 0,0:00:08.14,0:00:10.24,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}konuda iyi bir örnektir.
+Dialogue: 0,0:00:10.24,0:00:13.63,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Grafiğe baktığınızda\Ngenel yönün yukarı
+Dialogue: 0,0:00:13.63,0:00:17.07,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}olduğunu görebilirsiniz.\NAncak bu yol
+Dialogue: 0,0:00:17.07,0:00:19.28,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}her zaman düz bir çizgi
+Dialogue: 0,0:00:19.28,0:00:22.50,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}değildir. Zaman zaman\Naşağı yönlü
+Dialogue: 0,0:00:22.50,0:00:26.39,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}hareketler ve\Ndalgalanmalar yaşanması\Ndoğaldır.
+Dialogue: 0,0:00:26.39,0:00:29.16,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Önemli olan anlık\Ndeğişimlere değil,
+Dialogue: 0,0:00:29.16,0:00:31.47,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}genel eğilime\Nodaklanmaktır.
+Dialogue: 0,0:00:31.47,0:00:34.66,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}İncelediğimiz bu grafik\Naylık tarihsel
+Dialogue: 0,0:00:34.66,0:00:38.97,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}verileri göstermektedir.\NGüncel fiyatları temsil
+Dialogue: 0,0:00:38.97,0:00:43.21,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}etmez. Sabırlı olmak\Npiyasa okuryazarlığının
+Dialogue: 0,0:00:43.21,0:00:46.74,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}temelidir. Yatırım\Ntavsiyesi değildir.

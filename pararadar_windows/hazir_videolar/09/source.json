@@ -1,0 +1,12 @@
+{
+  "source": "https://raw.githubusercontent.com/datasets/s-and-p-500/main/data/data.csv",
+  "retrieved_utc": "2026-10-10T12:57:55.464230+00:00",
+  "sha256": "3a45dffabc414afc298c12159abc84c2875f88175ff3d4473ef7417e725ecac6",
+  "start": "2016-01-01",
+  "end": "2026-09-01",
+  "first": 1918.6,
+  "last": 7669.41,
+  "points": 129,
+  "frequency": "monthly",
+  "live": false
+}

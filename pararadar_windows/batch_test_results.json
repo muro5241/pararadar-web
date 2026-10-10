@@ -1,0 +1,516 @@
+{
+  "created_utc": "2026-10-10T13:00:35.916437+00:00",
+  "videos_passed": 10,
+  "videos_total": 10,
+  "checks_per_video": 10,
+  "regression_tests": 3,
+  "windows_installer_executed": false,
+  "original_windows_sources_available": false,
+  "tiktok_upload_enabled": false,
+  "tiktok_missing": [
+    "TIKTOK_CLIENT_KEY",
+    "TIKTOK_ACCESS_TOKEN"
+  ],
+  "videos": [
+    {
+      "video": "01",
+      "mp4": "/workspace/work/pararadar/data/videos/ad88d09380b34b38aee3770ab6f5bba9/01/video.mp4",
+      "sha256": "7775077a74aeb68c72a29b72626ca043537bac1355b527f4176d1c3f5193f8dc",
+      "title": "Uzun Vadeli Piyasa Bakışı",
+      "passed": true,
+      "checks": {
+        "portrait_9_16": true,
+        "h264_yuv420p": true,
+        "aac_audio": true,
+        "duration": true,
+        "av_sync": true,
+        "no_black_segments": true,
+        "visible_frames": true,
+        "audible_audio": true,
+        "subtitles_burned_in": true,
+        "subtitle_timeline": true
+      },
+      "duration_seconds": 47.16,
+      "resolution": [
+        720,
+        1280
+      ],
+      "fps": "25/1",
+      "audio_mean_db": -17.1,
+      "audio_peak_db": -1.2,
+      "samples": [
+        {
+          "seconds": 5.04,
+          "mean_luma": 193.21,
+          "contrast_std": 90.11,
+          "subtitle_white_pixels": 5922
+        },
+        {
+          "seconds": 23.71,
+          "mean_luma": 193.32,
+          "contrast_std": 90.05,
+          "subtitle_white_pixels": 6260
+        },
+        {
+          "seconds": 42.87,
+          "mean_luma": 193.67,
+          "contrast_std": 89.83,
+          "subtitle_white_pixels": 7601
+        }
+      ],
+      "subtitle_events": 15,
+      "speech_engine": "eSpeak NG tr (offline, synthetic)",
+      "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+    },
+    {
+      "video": "02",
+      "mp4": "/workspace/work/pararadar/data/videos/ad88d09380b34b38aee3770ab6f5bba9/02/video.mp4",
+      "sha256": "a4491321cb38b3ea478a8ced0d965946063fb5747e983f649ff068fa9c547552",
+      "title": "Düzenli Yatırım ve Zamanlama",
+      "passed": true,
+      "checks": {
+        "portrait_9_16": true,
+        "h264_yuv420p": true,
+        "aac_audio": true,
+        "duration": true,
+        "av_sync": true,
+        "no_black_segments": true,
+        "visible_frames": true,
+        "audible_audio": true,
+        "subtitles_burned_in": true,
+        "subtitle_timeline": true
+      },
+      "duration_seconds": 51.24,
+      "resolution": [
+        720,
+        1280
+      ],
+      "fps": "25/1",
+      "audio_mean_db": -17.0,
+      "audio_peak_db": -0.7,
+      "samples": [
+        {
+          "seconds": 4.26,
+          "mean_luma": 192.34,
+          "contrast_std": 90.63,
+          "subtitle_white_pixels": 3004
+        },
+        {
+          "seconds": 26.4,
+          "mean_luma": 193.35,
+          "contrast_std": 90.03,
+          "subtitle_white_pixels": 6806
+        },
+        {
+          "seconds": 48.12,
+          "mean_luma": 193.35,
+          "contrast_std": 89.99,
+          "subtitle_white_pixels": 6772
+        }
+      ],
+      "subtitle_events": 16,
+      "speech_engine": "eSpeak NG tr (offline, synthetic)",
+      "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+    },
+    {
+      "video": "03",
+      "mp4": "/workspace/work/pararadar/data/videos/ad88d09380b34b38aee3770ab6f5bba9/03/video.mp4",
+      "sha256": "78bfc75af5d5817e5416be2ce114e4494464dca16381cddc3272789d0a1196d9",
+      "title": "Nominal ve Reel Getiri Nedir",
+      "passed": true,
+      "checks": {
+        "portrait_9_16": true,
+        "h264_yuv420p": true,
+        "aac_audio": true,
+        "duration": true,
+        "av_sync": true,
+        "no_black_segments": true,
+        "visible_frames": true,
+        "audible_audio": true,
+        "subtitles_burned_in": true,
+        "subtitle_timeline": true
+      },
+      "duration_seconds": 49.52,
+      "resolution": [
+        720,
+        1280
+      ],
+      "fps": "25/1",
+      "audio_mean_db": -17.1,
+      "audio_peak_db": -1.1,
+      "samples": [
+        {
+          "seconds": 4.84,
+          "mean_luma": 192.99,
+          "contrast_std": 90.24,
+          "subtitle_white_pixels": 5423
+        },
+        {
+          "seconds": 23.87,
+          "mean_luma": 192.87,
+          "contrast_std": 90.31,
+          "subtitle_white_pixels": 4885
+        },
+        {
+          "seconds": 43.84,
+          "mean_luma": 193.43,
+          "contrast_std": 89.95,
+          "subtitle_white_pixels": 7016
+        }
+      ],
+      "subtitle_events": 15,
+      "speech_engine": "eSpeak NG tr (offline, synthetic)",
+      "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+    },
+    {
+      "video": "04",
+      "mp4": "/workspace/work/pararadar/data/videos/ad88d09380b34b38aee3770ab6f5bba9/04/video.mp4",
+      "sha256": "900b6d4cf7e085df7a453042c0ba5654a8b06e3541db7cfcab11909452b69860",
+      "title": "Düşüş Dönemlerinde Risk Yönetimi",
+      "passed": true,
+      "checks": {
+        "portrait_9_16": true,
+        "h264_yuv420p": true,
+        "aac_audio": true,
+        "duration": true,
+        "av_sync": true,
+        "no_black_segments": true,
+        "visible_frames": true,
+        "audible_audio": true,
+        "subtitles_burned_in": true,
+        "subtitle_timeline": true
+      },
+      "duration_seconds": 48.564,
+      "resolution": [
+        720,
+        1280
+      ],
+      "fps": "25/1",
+      "audio_mean_db": -17.0,
+      "audio_peak_db": -1.2,
+      "samples": [
+        {
+          "seconds": 5.2,
+          "mean_luma": 192.91,
+          "contrast_std": 90.25,
+          "subtitle_white_pixels": 5921
+        },
+        {
+          "seconds": 24.33,
+          "mean_luma": 192.72,
+          "contrast_std": 90.36,
+          "subtitle_white_pixels": 5035
+        },
+        {
+          "seconds": 44.71,
+          "mean_luma": 192.88,
+          "contrast_std": 90.26,
+          "subtitle_white_pixels": 5739
+        }
+      ],
+      "subtitle_events": 15,
+      "speech_engine": "eSpeak NG tr (offline, synthetic)",
+      "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+    },
+    {
+      "video": "05",
+      "mp4": "/workspace/work/pararadar/data/videos/ad88d09380b34b38aee3770ab6f5bba9/05/video.mp4",
+      "sha256": "ee64ce7fdaeb7f2def188e0a8c44188cf55d2510a828d6412c3b82b457bcc511",
+      "title": "Çeşitlendirmenin Önemi",
+      "passed": true,
+      "checks": {
+        "portrait_9_16": true,
+        "h264_yuv420p": true,
+        "aac_audio": true,
+        "duration": true,
+        "av_sync": true,
+        "no_black_segments": true,
+        "visible_frames": true,
+        "audible_audio": true,
+        "subtitles_burned_in": true,
+        "subtitle_timeline": true
+      },
+      "duration_seconds": 48.08,
+      "resolution": [
+        720,
+        1280
+      ],
+      "fps": "25/1",
+      "audio_mean_db": -17.0,
+      "audio_peak_db": -1.1,
+      "samples": [
+        {
+          "seconds": 4.97,
+          "mean_luma": 193.48,
+          "contrast_std": 89.95,
+          "subtitle_white_pixels": 6826
+        },
+        {
+          "seconds": 24.19,
+          "mean_luma": 192.8,
+          "contrast_std": 90.35,
+          "subtitle_white_pixels": 4165
+        },
+        {
+          "seconds": 44.33,
+          "mean_luma": 193.28,
+          "contrast_std": 90.05,
+          "subtitle_white_pixels": 5923
+        }
+      ],
+      "subtitle_events": 16,
+      "speech_engine": "eSpeak NG tr (offline, synthetic)",
+      "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+    },
+    {
+      "video": "06",
+      "mp4": "/workspace/work/pararadar/data/videos/ad88d09380b34b38aee3770ab6f5bba9/06/video.mp4",
+      "sha256": "8f89be8e2ec550b14782f7bfb19b7a8bde02d0040f5a7ba03af7d081819aefcd",
+      "title": "Geçmiş Getiri ve Beklentiler",
+      "passed": true,
+      "checks": {
+        "portrait_9_16": true,
+        "h264_yuv420p": true,
+        "aac_audio": true,
+        "duration": true,
+        "av_sync": true,
+        "no_black_segments": true,
+        "visible_frames": true,
+        "audible_audio": true,
+        "subtitles_burned_in": true,
+        "subtitle_timeline": true
+      },
+      "duration_seconds": 50.32,
+      "resolution": [
+        720,
+        1280
+      ],
+      "fps": "25/1",
+      "audio_mean_db": -17.2,
+      "audio_peak_db": -1.1,
+      "samples": [
+        {
+          "seconds": 5.2,
+          "mean_luma": 193.08,
+          "contrast_std": 90.19,
+          "subtitle_white_pixels": 5656
+        },
+        {
+          "seconds": 24.12,
+          "mean_luma": 193.09,
+          "contrast_std": 90.19,
+          "subtitle_white_pixels": 5702
+        },
+        {
+          "seconds": 46.07,
+          "mean_luma": 193.46,
+          "contrast_std": 89.95,
+          "subtitle_white_pixels": 7052
+        }
+      ],
+      "subtitle_events": 15,
+      "speech_engine": "eSpeak NG tr (offline, synthetic)",
+      "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+    },
+    {
+      "video": "07",
+      "mp4": "/workspace/work/pararadar/data/videos/ad88d09380b34b38aee3770ab6f5bba9/07/video.mp4",
+      "sha256": "7bad443c9bd26e6f8c24e44807689130ae3e350b50e65a8cddb132de839d8858",
+      "title": "Enflasyon ve Birikim Stratejisi",
+      "passed": true,
+      "checks": {
+        "portrait_9_16": true,
+        "h264_yuv420p": true,
+        "aac_audio": true,
+        "duration": true,
+        "av_sync": true,
+        "no_black_segments": true,
+        "visible_frames": true,
+        "audible_audio": true,
+        "subtitles_burned_in": true,
+        "subtitle_timeline": true
+      },
+      "duration_seconds": 49.363,
+      "resolution": [
+        720,
+        1280
+      ],
+      "fps": "25/1",
+      "audio_mean_db": -17.1,
+      "audio_peak_db": -1.0,
+      "samples": [
+        {
+          "seconds": 5.78,
+          "mean_luma": 193.45,
+          "contrast_std": 89.94,
+          "subtitle_white_pixels": 7298
+        },
+        {
+          "seconds": 23.92,
+          "mean_luma": 192.9,
+          "contrast_std": 90.27,
+          "subtitle_white_pixels": 5086
+        },
+        {
+          "seconds": 43.64,
+          "mean_luma": 193.31,
+          "contrast_std": 90.04,
+          "subtitle_white_pixels": 6685
+        }
+      ],
+      "subtitle_events": 15,
+      "speech_engine": "eSpeak NG tr (offline, synthetic)",
+      "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+    },
+    {
+      "video": "08",
+      "mp4": "/workspace/work/pararadar/data/videos/ad88d09380b34b38aee3770ab6f5bba9/08/video.mp4",
+      "sha256": "e8119cfefc483c6a542d237fdded6f1767d76bec9bf7a4e2bf9fd8b0e4336b5d",
+      "title": "Yatırım Süresi ve Riskler",
+      "passed": true,
+      "checks": {
+        "portrait_9_16": true,
+        "h264_yuv420p": true,
+        "aac_audio": true,
+        "duration": true,
+        "av_sync": true,
+        "no_black_segments": true,
+        "visible_frames": true,
+        "audible_audio": true,
+        "subtitles_burned_in": true,
+        "subtitle_timeline": true
+      },
+      "duration_seconds": 47.76,
+      "resolution": [
+        720,
+        1280
+      ],
+      "fps": "25/1",
+      "audio_mean_db": -17.0,
+      "audio_peak_db": -0.9,
+      "samples": [
+        {
+          "seconds": 4.82,
+          "mean_luma": 193.3,
+          "contrast_std": 90.08,
+          "subtitle_white_pixels": 5920
+        },
+        {
+          "seconds": 25.57,
+          "mean_luma": 193.81,
+          "contrast_std": 89.73,
+          "subtitle_white_pixels": 7929
+        },
+        {
+          "seconds": 43.59,
+          "mean_luma": 193.52,
+          "contrast_std": 89.94,
+          "subtitle_white_pixels": 6769
+        }
+      ],
+      "subtitle_events": 16,
+      "speech_engine": "eSpeak NG tr (offline, synthetic)",
+      "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+    },
+    {
+      "video": "09",
+      "mp4": "/workspace/work/pararadar/data/videos/ad88d09380b34b38aee3770ab6f5bba9/09/video.mp4",
+      "sha256": "100366d38bc92482ef331b4a95ab90ccfe62fd8c67675a5179ac3444a76c4d71",
+      "title": "Bileşik Getiri ve Sabır",
+      "passed": true,
+      "checks": {
+        "portrait_9_16": true,
+        "h264_yuv420p": true,
+        "aac_audio": true,
+        "duration": true,
+        "av_sync": true,
+        "no_black_segments": true,
+        "visible_frames": true,
+        "audible_audio": true,
+        "subtitles_burned_in": true,
+        "subtitle_timeline": true
+      },
+      "duration_seconds": 48.291,
+      "resolution": [
+        720,
+        1280
+      ],
+      "fps": "25/1",
+      "audio_mean_db": -17.0,
+      "audio_peak_db": -1.3,
+      "samples": [
+        {
+          "seconds": 5.05,
+          "mean_luma": 193.27,
+          "contrast_std": 90.1,
+          "subtitle_white_pixels": 5644
+        },
+        {
+          "seconds": 24.02,
+          "mean_luma": 193.73,
+          "contrast_std": 89.82,
+          "subtitle_white_pixels": 7363
+        },
+        {
+          "seconds": 42.39,
+          "mean_luma": 193.54,
+          "contrast_std": 89.91,
+          "subtitle_white_pixels": 6657
+        }
+      ],
+      "subtitle_events": 15,
+      "speech_engine": "eSpeak NG tr (offline, synthetic)",
+      "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+    },
+    {
+      "video": "10",
+      "mp4": "/workspace/work/pararadar/data/videos/ad88d09380b34b38aee3770ab6f5bba9/10/video.mp4",
+      "sha256": "6233fdc341007c3784f52c80d1262c7543feb9a298a17f970b5743e0782854bf",
+      "title": "Endeksleri Doğru Okumak",
+      "passed": true,
+      "checks": {
+        "portrait_9_16": true,
+        "h264_yuv420p": true,
+        "aac_audio": true,
+        "duration": true,
+        "av_sync": true,
+        "no_black_segments": true,
+        "visible_frames": true,
+        "audible_audio": true,
+        "subtitles_burned_in": true,
+        "subtitle_timeline": true
+      },
+      "duration_seconds": 46.76,
+      "resolution": [
+        720,
+        1280
+      ],
+      "fps": "25/1",
+      "audio_mean_db": -17.1,
+      "audio_peak_db": -1.1,
+      "samples": [
+        {
+          "seconds": 4.64,
+          "mean_luma": 192.6,
+          "contrast_std": 90.49,
+          "subtitle_white_pixels": 3741
+        },
+        {
+          "seconds": 24.44,
+          "mean_luma": 193.75,
+          "contrast_std": 89.76,
+          "subtitle_white_pixels": 8213
+        },
+        {
+          "seconds": 41.09,
+          "mean_luma": 193.53,
+          "contrast_std": 89.92,
+          "subtitle_white_pixels": 7118
+        }
+      ],
+      "subtitle_events": 15,
+      "speech_engine": "eSpeak NG tr (offline, synthetic)",
+      "limits": "Ses anlaşılabilirliği, finans yorumunun doğruluğu ve tam metin OCR incelemesi insan kontrolü gerektirir."
+    }
+  ]
+}

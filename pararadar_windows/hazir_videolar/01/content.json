@@ -1,0 +1,7 @@
+{
+  "title": "Uzun Vadeli Piyasa Bakışı",
+  "script": "Finansal piyasalar her zaman hareketlidir. Amerikan beş yüz endeksi üzerinden baktığımızda genel eğilimin yukarı yönlü olduğunu görüyoruz. Ancak bu yolculuk hiçbir zaman dümdüz ilerlemez. Grafiklerde ara ara düşüşler ve dalgalanmalar yaşanması oldukça doğaldır. Önemli olan bu hareketlerin piyasanın genel yapısında olduğunu anlamaktır. Paylaştığımız bu grafik aylık tarihsel verileri göstermektedir. Güncel fiyatları değil, geçmişteki genel seyri temsil eder. Sabırlı olmak ve büyük resme odaklanmak finansal okuryazarlığın temelidir. Yatırım tavsiyesi değildir.",
+  "model": "google/gemma-4-31b-it",
+  "topic": "Uzun vadede dalgalanma",
+  "ai_generated": true
+}

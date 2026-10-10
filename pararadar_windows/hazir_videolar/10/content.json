@@ -1,0 +1,7 @@
+{
+  "title": "Endeksleri Doğru Okumak",
+  "script": "Finansal piyasaları anlamak için endeksleri doğru okumak gerekir. Amerikan beş yüz endeksi bu konuda iyi bir örnektir. Grafiğe baktığınızda genel yönün yukarı olduğunu görebilirsiniz. Ancak bu yol her zaman düz bir çizgi değildir. Zaman zaman aşağı yönlü hareketler ve dalgalanmalar yaşanması doğaldır. Önemli olan anlık değişimlere değil, genel eğilime odaklanmaktır. İncelediğimiz bu grafik aylık tarihsel verileri göstermektedir. Güncel fiyatları temsil etmez. Sabırlı olmak piyasa okuryazarlığının temelidir. Yatırım tavsiyesi değildir.",
+  "model": "google/gemma-4-31b-it",
+  "topic": "Endeksleri doğru okumak",
+  "ai_generated": true
+}

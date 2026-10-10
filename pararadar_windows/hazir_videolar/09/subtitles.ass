@@ -1,0 +1,25 @@
+﻿[Script Info]
+ScriptType: v4.00+
+PlayResX: 720
+PlayResY: 1280
+WrapStyle: 2
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,DejaVu Sans,38,&H00FFFFFF,&H0000DBFF,&H00502D11,&H00502D11,-1,0,0,0,100,100,0,0,1,1,0,5,50,50,0,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:03.21,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Bileşik getirinin gücü\Nzamanla ortaya
+Dialogue: 0,0:00:03.21,0:00:06.89,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}çıkar. Küçük birikimler\Nuzun vadede
+Dialogue: 0,0:00:06.89,0:00:09.09,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}kartopu etkisi yaratır.
+Dialogue: 0,0:00:09.09,0:00:12.11,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Amerikan beş yüz endeksi\Ngrafiğine
+Dialogue: 0,0:00:12.11,0:00:15.05,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}baktığımızda bu durumu\Nnet görürüz.
+Dialogue: 0,0:00:15.05,0:00:17.87,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Endeks genel olarak\Nyukarı yönlü
+Dialogue: 0,0:00:17.87,0:00:19.54,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}bir seyir izlemiş.
+Dialogue: 0,0:00:19.54,0:00:22.04,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Tabii ki bu yolculukta\Nara
+Dialogue: 0,0:00:22.04,0:00:26.01,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}dalgalanmalar yaşanmış.\NÖnemli olan piyasa
+Dialogue: 0,0:00:26.01,0:00:29.78,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}hareketlerine değil\Ngenel trende\Nodaklanmaktır.
+Dialogue: 0,0:00:29.78,0:00:32.91,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Sabır ve disiplin\Nfinansal büyümenin
+Dialogue: 0,0:00:32.91,0:00:37.09,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}anahtarıdır. Ekrandaki\Naylık tarihsel veriler
+Dialogue: 0,0:00:37.09,0:00:40.62,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}bu gelişim sürecini\Naçıkça göstermektedir.
+Dialogue: 0,0:00:40.62,0:00:44.16,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Kendi stratejinizi\Nbelirlemek için geçmiş
+Dialogue: 0,0:00:44.16,0:00:48.29,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}verileri inceleyin.\NYatırım tavsiyesi\Ndeğildir.

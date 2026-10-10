@@ -1,0 +1,7 @@
+{
+  "title": "Düşüş Dönemlerinde Risk Yönetimi",
+  "script": "Piyasalarda hareketlilik her zaman mevcuttur. Amerikan beş yüz endeksi üzerinden baktığımızda genel eğilimin yukarı yönlü olduğunu görüyoruz. Ancak bu yolculuk her zaman düz bir çizgi şeklinde ilerlemez. Zaman zaman sert geri çekilmeler ve dalgalanmalar yaşanabilir. Bu durumlar yatırımcılar için risk oluşturur. Önemli olan bu süreçleri doğru yönetebilmektir. Önünüzdeki grafik aylık tarihsel verileri göstermektedir. Geçmişteki iniş çıkışlar piyasanın doğal bir parçasıdır. Grafiği inceleyerek bu döngüleri daha iyi anlayabilirsiniz. Yatırım tavsiyesi değildir.",
+  "model": "google/gemma-4-31b-it",
+  "topic": "Düşüş dönemlerinde risk",
+  "ai_generated": true
+}

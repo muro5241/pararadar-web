@@ -1,0 +1,7 @@
+{
+  "title": "Nominal ve Reel Getiri Nedir",
+  "script": "Yatırımlarınızda nominal getiri ile reel getiri arasındaki farkı bilmek çok önemlidir. Nominal getiri sadece rakamsal artışı gösterir. Reel getiri ise satın alma gücünüzü yansıtır. Amerikan beş yüz endeksi grafiğine baktığımızda uzun vadeli bir yükseliş görüyoruz. Tabii bu süreçte ara dalgalanmalar yaşanması oldukça doğaldır. Grafik üzerindeki aylık tarihsel veriler genel eğilimi anlamamıza yardımcı olur. Reel kazancı hesaplamak için enflasyon etkisini göz önünde bulundurmalısınız. Bu temel kavramlar finansal okuryazarlığın merkezindedir. Yatırım tavsiyesi değildir.",
+  "model": "google/gemma-4-31b-it",
+  "topic": "Nominal ve reel getiri",
+  "ai_generated": true
+}

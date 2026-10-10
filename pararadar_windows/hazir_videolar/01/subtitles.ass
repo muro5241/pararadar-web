@@ -1,0 +1,25 @@
+﻿[Script Info]
+ScriptType: v4.00+
+PlayResX: 720
+PlayResY: 1280
+WrapStyle: 2
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,DejaVu Sans,38,&H00FFFFFF,&H0000DBFF,&H00502D11,&H00502D11,-1,0,0,0,100,100,0,0,1,1,0,5,50,50,0,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:03.55,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Finansal piyasalar her\Nzaman hareketlidir.
+Dialogue: 0,0:00:03.55,0:00:06.54,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Amerikan beş yüz endeksi\Nüzerinden
+Dialogue: 0,0:00:06.54,0:00:09.81,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}baktığımızda genel\Neğilimin yukarı yönlü
+Dialogue: 0,0:00:09.81,0:00:13.21,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}olduğunu görüyoruz.\NAncak bu yolculuk
+Dialogue: 0,0:00:13.21,0:00:15.90,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}hiçbir zaman dümdüz\Nilerlemez.
+Dialogue: 0,0:00:15.90,0:00:18.72,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Grafiklerde ara ara\Ndüşüşler ve
+Dialogue: 0,0:00:18.72,0:00:22.13,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}dalgalanmalar yaşanması\Noldukça doğaldır.
+Dialogue: 0,0:00:22.13,0:00:25.29,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Önemli olan bu\Nhareketlerin piyasanın
+Dialogue: 0,0:00:25.29,0:00:28.12,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}genel yapısında olduğunu\Nanlamaktır.
+Dialogue: 0,0:00:28.12,0:00:31.39,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Paylaştığımız bu grafik\Naylık tarihsel
+Dialogue: 0,0:00:31.39,0:00:35.37,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}verileri göstermektedir.\NGüncel fiyatları değil,
+Dialogue: 0,0:00:35.37,0:00:38.44,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}geçmişteki genel seyri\Ntemsil eder.
+Dialogue: 0,0:00:38.44,0:00:41.00,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Sabırlı olmak ve büyük\Nresme
+Dialogue: 0,0:00:41.00,0:00:44.75,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}odaklanmak finansal\Nokuryazarlığın\Ntemelidir.
+Dialogue: 0,0:00:44.75,0:00:47.15,Default,,0,0,0,,{\pos(360,1085)\fad(70,70)}Yatırım tavsiyesi\Ndeğildir.

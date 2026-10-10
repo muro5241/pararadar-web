@@ -1,0 +1,7 @@
+{
+  "title": "Enflasyon ve Birikim Stratejisi",
+  "script": "Enflasyon karşısında birikimlerinizi korumak oldukça önemlidir. Paranın değer kaybettiği dönemlerde doğru araçlara yönelmek gerekir. Amerikan beş yüz endeksi bu konuda iyi bir örnektir. Grafik üzerinden incelediğimizde endeksin uzun vadede yukarı yönlü bir seyir izlediğini görüyoruz. Tabii ki bu yolculukta ara dalgalanmalar ve düşüşler yaşanması normaldir. Önemli olan genel eğilimi anlamaktır. Aylık tarihsel verilerin yer aldığı bu grafik bize piyasa hareketlerini gösteriyor. Birikimlerinizi yönetirken bu verilere göz atabilirsiniz. Yatırım tavsiyesi değildir.",
+  "model": "google/gemma-4-31b-it",
+  "topic": "Enflasyon ve birikim",
+  "ai_generated": true
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Yatırım Süresi ve Riskler",
+  "script": "Yatırım yaparken zaman kavramı çok önemlidir. Amerikan beş yüz endeksi üzerinden bunu inceleyebiliriz. Grafiklere baktığımızda piyasaların genel yönünün yukarı olduğunu görürüz. Ancak bu yolculuk her zaman düz bir çizgi şeklinde ilerlemez. Zaman zaman sert düşüşler ve dalgalanmalar yaşanabilir. Sabırlı olmak riskleri yönetmenin temel yoludur. Uzun vadeli bakış açısı piyasa gürültüsünü azaltır. Önünüzdeki aylık tarihsel veriler bu genel seyri net bir şekilde göstermektedir. Grafikteki hareketleri dikkatle inceleyin. Yatırım tavsiyesi değildir.",
+  "model": "google/gemma-4-31b-it",
+  "topic": "Yatırım süresi ve risk",
+  "ai_generated": true
+}

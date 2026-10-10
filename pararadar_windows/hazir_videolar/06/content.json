@@ -1,0 +1,7 @@
+{
+  "title": "Geçmiş Getiri ve Beklentiler",
+  "script": "Finansal piyasalarda geçmiş veriler yol gösterici olabilir. Amerikan beş yüz endeksi genel görünümde uzun vadeli bir yükseliş eğilimi sergilemiştir. Tabii ki bu süreç boyunca bazı ara dalgalanmalar yaşanması oldukça doğaldır. Piyasalar her zaman doğrusal ilerlemez. Önemli olan genel trendi doğru okumaktır. Önünüzdeki grafik aylık tarihsel verileri göstermektedir. Bu veriler bugünün fiyatını temsil etmez. Geçmiş performans gelecekteki sonuçların garantisi değildir. Grafik üzerindeki hareketleri inceleyerek piyasa yapısını anlayabilirsiniz. Yatırım tavsiyesi değildir.",
+  "model": "google/gemma-4-31b-it",
+  "topic": "Geçmiş getiri ve beklenti",
+  "ai_generated": true
+}
