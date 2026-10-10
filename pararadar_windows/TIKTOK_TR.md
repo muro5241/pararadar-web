@@ -98,7 +98,8 @@ Disable-ScheduledTask -TaskName ParaRadar-TikTok
 paylaşım kanıtı değildir. Bu oturuma Windows bilgisayarı veya yetkili TikTok kullanıcı
 oturumu bağlı değildir. Client key, callback yapılandırması ve onay beyanı sağlanmadı;
 client secret tek başına yeterli değildir. Canlı upload/init/publish yapılmadı.
-Windows DPAPI ve Görev Zamanlayıcı yerel Windows çalıştırmasıyla doğrulanmalıdır.
+Windows DPAPI ve ACL koruması Windows CI’da doğrulandı. Görev Zamanlayıcı’nın
+kullanıcının bilgisayarındaki kurulumu ayrıca çalıştırılmalıdır.
 
 TikTok, Direct Post için yaratıcı bilgisi, önizleme, görünürlük seçimi ve açık
 kullanıcı izni ister. Kişisel/iç kullanım araçlarının uygulama incelemesinden geçmesi

@@ -6,8 +6,9 @@ Entegrasyon dalı: `feat/windows-tiktok-direct-post`.
 
 ## Yerel bulut ortamında tamamlanan doğrulama
 
-- Python 3.12 / Linux: TikTok backend `pytest tests -q`: **86 geçti, 1 atlandı**.
+- Python 3.12 / Linux: TikTok backend `pytest tests -q`: **86 geçti, 2 atlandı**.
   Chromium ile 3 gerçek tarayıcı testi dahil. Yalnızca TikTok upstream yanıtları simüle.
+  Atlananlar: yetkisiz canlı kontrol ve yalnız Windows üzerinde çalışan ACL testi.
 - Mevcut video üretimi: `python -m unittest test_regression test_key_discovery -v`:
   **6 test geçti**. Siyah/sessiz/geçersiz süreli video reddi, eşzamanlı kuyruk sınırı,
   tamamlanan dosyaları koruyan resume ve anahtar keşfi testleri.
@@ -52,11 +53,17 @@ fonksiyonu dosyanın geçici kopyasında yeniden çalıştırıldı:
 ve Direct Post uygulama onayı bu oturumda mevcut değil. Yalnızca client secret hazır.
 Bu nedenle canlı test özellikle atlandı; simüle PUBLISH_COMPLETE canlı başarı değildir.
 
-Windows bilgisayarı bu oturuma bağlı değil. Yerel DPAPI fallback reddi Linux'ta test
-edildi; Windows DPAPI ve PowerShell/Görev Zamanlayıcı gerçek çalıştırması yerel olarak
-henüz doğrulanmadı. GitHub Actions Windows iş akışı bu dalda ayrıca eklendi;
-Windows DPAPI, sözleşme testleri, üretim regresyonları ve PowerShell parse kontrolünü
-çalıştırır. CI sonucu ayrı raporlanır; gönderim yetkisi veya yayınlama yapmaz.
+Kullanıcının Windows bilgisayarı bu oturuma bağlı değil. GitHub Actions Windows Server
+2025 / Python 3.12.10 üzerinde **84 entegrasyon testi ve 6 üretim regresyon testi geçti**.
+Gerçek DPAPI şifreleme/açma, şifreli yapılandırma ve yalnız mevcut kullanıcı/SYSTEM
+SID'lerine izin veren klasör/dosya ACL kontrolü başarılı. PowerShell kurulum betiği
+parse kontrolü başarılı; kullanıcının Görev Zamanlayıcı kurulumu henüz çalıştırılmadı.
+
+Windows CI kanıtı: https://github.com/muro5241/pararadar-web/actions/runs/38074338909
+İlk CI'deki POSIX chmod varsayımı Windows ACL testiyle değiştirildi. Yeni ACL testi,
+önceden var olan açık izinlerin yalnız grant ekleyerek temizlenmediğini yakaladı;
+Windows DACL'si artık güvenli SID'lerle tamamen değiştirilir. Son CI başarılıdır.
+Bu işlemler test runner'ında sahte test anahtarlarıyla yapıldı; canlı TikTok tokenı yoktur.
 
 FastAPI'nin yeni TestClient/httpx uyumluluğu için bir deprecation uyarısı var;
 test başarısını etkilemiyor. Gerçek kullanıcı girişi ve Portal onayı tamamlandıktan
