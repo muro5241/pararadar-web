@@ -246,3 +246,50 @@ def test_local_videos_only_expose_validated_outputs(settings, provider, tmp_path
         assert c.get("/api/local-videos/" + listed[0]["id"]).content == b"local video"
         assert c.get("/api/local-videos/arbitrary-path").status_code == 404
         assert not any("video/init/" in r.url.path for r in provider.requests)
+
+
+def test_windows_dpapi_config_and_private_acl(tmp_path, monkeypatch):
+    import csv
+    import importlib.util
+    import json
+    import os
+    import subprocess
+
+    from cryptography.fernet import Fernet
+
+    if os.name != "nt":
+        pytest.skip("Windows DPAPI and NTFS ACL require Windows")
+    path = Path(__file__).resolve().parents[2] / "tiktok_windows.py"
+    spec = importlib.util.spec_from_file_location("windows_acl_launcher", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    monkeypatch.setenv("LOCALAPPDATA", str(tmp_path))
+    base = module.protected_dir()
+    config = {
+        "client_key": "test-client",
+        "client_secret": "test-hidden-secret",
+        "encryption_key": Fernet.generate_key().decode(),
+        "single_test_mode": True,
+    }
+    module.write_config(base, config)
+    raw = (base / "settings.dpapi").read_bytes()
+    assert b"test-hidden-secret" not in raw
+    assert config["encryption_key"].encode() not in raw
+    assert module.read_config(base) == config
+    who = subprocess.run(
+        ["whoami", "/user", "/fo", "csv", "/nh"],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    sid = next(csv.reader([who.stdout.strip()]))[1]
+    script = "(Get-Acl -LiteralPath $env:PARARADAR_TEST_ACL).GetAccessRules($true,$true,[System.Security.Principal.SecurityIdentifier]) | ForEach-Object { $_.IdentityReference.Value } | ConvertTo-Json -Compress"
+    for target in (base, base / "settings.dpapi"):
+        result = subprocess.run(
+            ["pwsh", "-NoProfile", "-Command", script],
+            env={**os.environ, "PARARADAR_TEST_ACL": str(target)},
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        assert set(json.loads(result.stdout)) == {sid, "S-1-5-18"}

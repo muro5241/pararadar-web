@@ -125,7 +125,9 @@ def test_encrypted_at_rest_and_survives_reopen(client, auth, settings):
         raw = database.read()
     assert b"test-access-token" not in raw and b"test-refresh-token" not in raw
     assert client.cookies.get(COOKIE).encode() not in raw
-    assert os.stat(settings.database_path).st_mode & 0o777 == 0o600
+    if os.name != "nt":
+        assert os.stat(settings.database_path).st_mode & 0o777 == 0o600
+    # Windows protection is an ACL, verified with the real desktop launcher test.
     reopened = Store(settings.database_path, settings.encryption_key)
     assert reopened.tokens(session["account"]) == tokens
     assert reopened.session(client.cookies.get(COOKIE)) == session
