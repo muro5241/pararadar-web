@@ -4,6 +4,12 @@
 )
 $ErrorActionPreference = 'Stop'
 $Source = $PSScriptRoot
+# Keep all generated files on an ASCII-only path: eSpeak NG cannot write WAV to Masaüstü.
+$SafeData = 'C:\ParaRadarWork\data'
+$SafeEspeak = 'C:\ParaRadarTools\espeak'
+New-Item -ItemType Directory -Path $SafeData,$SafeEspeak -Force | Out-Null
+$env:PARARADAR_DATA = $SafeData
+$env:ESPEAK_DATA = $SafeEspeak
 if (-not (Test-Path -LiteralPath $ProjectPath -PathType Container)) { throw "Proje klasörü bulunamadı: $ProjectPath" }
 $Stamp = Get-Date -Format 'yyyyMMdd_HHmmss_fff'
 $Backup = Join-Path $ProjectPath "pararadar_yedek\$Stamp"
@@ -77,10 +83,11 @@ if (-not (Get-Command ffmpeg -ErrorAction SilentlyContinue)) {
 } else { $FfmpegDir = Split-Path (Get-Command ffmpeg).Source -Parent }
 $env:PATH = $FfmpegDir + ';' + $env:PATH
 Add-Content -LiteralPath $EnvFile -Value ("FFMPEG_DIR='" + $FfmpegDir.Replace('\','/') + "'") -Encoding utf8
-$EspeakCommand = Get-Command espeak-ng -ErrorAction SilentlyContinue
-if ($EspeakCommand) { $EspeakExePath = $EspeakCommand.Source }
+$ExistingSafeEspeak = Join-Path $SafeEspeak 'espeak-ng.exe'
+$EspeakCommand = if (Test-Path -LiteralPath $ExistingSafeEspeak) { Get-Item -LiteralPath $ExistingSafeEspeak } else { Get-Command espeak-ng -ErrorAction SilentlyContinue }
+if ($EspeakCommand) { $EspeakExePath = if ($EspeakCommand -is [System.IO.FileInfo]) { $EspeakCommand.FullName } else { $EspeakCommand.Source } }
 else {
-  $EspeakRoot = Join-Path $Tools 'espeak'
+  $EspeakRoot = $SafeEspeak
   $EspeakExe = Get-ChildItem -LiteralPath $EspeakRoot -Filter espeak-ng.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
   if (-not $EspeakExe) {
     $Msi = Join-Path $Tools 'espeak-ng.msi'
@@ -93,6 +100,7 @@ else {
   $EspeakExePath = $EspeakExe.FullName
 }
 Add-Content -LiteralPath $EnvFile -Value ("ESPEAK_BIN='" + $EspeakExePath.Replace('\','/') + "'") -Encoding utf8
+Add-Content -LiteralPath $EnvFile -Value ("PARARADAR_DATA='" + $SafeData.Replace('\','/') + "'") -Encoding utf8
 $EspeakData = Get-ChildItem -LiteralPath (Split-Path $EspeakExePath -Parent) -Directory -Filter 'espeak-ng-data' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
 if (-not $EspeakData -and (Test-Path (Join-Path $Tools 'espeak'))) {
   $EspeakData = Get-ChildItem -LiteralPath (Join-Path $Tools 'espeak') -Directory -Filter 'espeak-ng-data' -Recurse | Select-Object -First 1
@@ -100,6 +108,7 @@ if (-not $EspeakData -and (Test-Path (Join-Path $Tools 'espeak'))) {
 if ($EspeakData) {
   $DataParent = Split-Path $EspeakData.FullName -Parent
   Add-Content -LiteralPath $EnvFile -Value ("ESPEAK_DATA='" + $DataParent.Replace('\','/') + "'") -Encoding utf8
+  $env:ESPEAK_DATA = $DataParent
 }
 # Check real dependencies and AI availability before registering automatic jobs.
 & $Python -c "import sys;sys.path.insert(0,sys.argv[1]);import pararadar;pararadar.dependencies();assert pararadar.os.getenv('NVIDIA_API_KEY'), 'NVIDIA_API_KEY eksik: pararadar_service/.env dosyasına ekleyin'" $Target
@@ -132,5 +141,5 @@ if (-not $Ready) { throw 'Görev kaydedildi ancak panel açılmadı; Windows Gö
 Start-Process 'http://127.0.0.1:8765'
 Write-Host "Kurulum tamamlandı. Yedek: $Backup"
 Write-Host "Panel: http://127.0.0.1:8765 | Günlük üretim: $DailyTime (Windows yerel saati)"
-Write-Host "Videolar: $Target\data\videos | Kayıt: $Target\data\worker.log"
+Write-Host "Videolar: $SafeData\videos | Kayıt: $SafeData\worker.log"
 Write-Host 'Windows oturumu açık kalmalı. Uyku/kapalı bilgisayarda üretim çalışmaz.'
