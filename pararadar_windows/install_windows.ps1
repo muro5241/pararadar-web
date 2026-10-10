@@ -1,4 +1,4 @@
-param(
+﻿param(
   [string]$ProjectPath = 'C:\Users\murat\OneDrive\Masaüstü\kripto_borsa_bot',
   [string]$DailyTime = '10:00'
 )
@@ -25,7 +25,7 @@ foreach ($Name in @('ParaRadar-Worker','ParaRadar-Daily10')) {
   }
 }
 New-Item -ItemType Directory -Path $Target -Force | Out-Null
-foreach ($Name in @('pararadar.py','dashboard.html','requirements.txt','.env.example','.gitignore','README_TR.md','stop_windows.ps1','test_regression.py')) {
+foreach ($Name in @('pararadar.py','dashboard.html','requirements.txt','.env.example','.gitignore','README_TR.md','stop_windows.ps1','test_regression.py','configure_key.py','test_key_discovery.py')) {
   Copy-Item -LiteralPath (Join-Path $Source $Name) -Destination $Target -Force
 }
 $Venv = Join-Path $Target '.venv'
@@ -50,6 +50,17 @@ if (-not (Test-Path -LiteralPath $EnvFile)) {
     if ($Bindings) { Add-Content -LiteralPath $EnvFile -Value $Bindings -Encoding utf8 }
   }
 }
+# Search only the user's selected project and desktop folders; never print keys.
+$KeyArgs = @((Join-Path $Target 'configure_key.py'), '--env-file', $EnvFile, '--folder', $ProjectPath)
+$DesktopFolders = @([Environment]::GetFolderPath('Desktop'), (Split-Path $ProjectPath -Parent))
+foreach ($Root in @($env:OneDrive, $env:OneDriveConsumer, $env:USERPROFILE)) {
+  if ($Root) { $DesktopFolders += (Join-Path $Root 'Desktop'); $DesktopFolders += (Join-Path $Root 'Masaüstü') }
+}
+foreach ($Folder in ($DesktopFolders | Where-Object { $_ } | Select-Object -Unique)) {
+  $KeyArgs += @('--folder', $Folder)
+}
+& $Python @KeyArgs
+if ($LASTEXITCODE -ne 0) { throw 'Yerel NVIDIA anahtarı seçilemedi; otomatik görevler başlatılmadı.' }
 $Tools = Join-Path $Target 'tools'
 New-Item -ItemType Directory -Path $Tools -Force | Out-Null
 # Fetch from the upstream release repositories, without browser automation.

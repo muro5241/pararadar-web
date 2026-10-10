@@ -30,3 +30,5 @@ Türkçe ses eSpeak NG sentetik sesidir. Grafik gerçek aylık tarihsel S&P 500 
 TikTok yüklemesi yapılmadı. Eksik: TIKTOK_CLIENT_KEY ve TIKTOK_ACCESS_TOKEN. Pakette gizli anahtar bulunmaz.
 
 GitHub paket aktarımına kullanıcı açıkça izin verdi. Paket ayrı bir dala aktarılır; hedef Windows bilgisayarındaki kurulum henüz çalıştırılmamıştır.
+
+Anahtar keşif güncellemesi: üç otomatik test; yerel kaydetme ve günlükte gizleme, mevcut Python kodunu çalıştırmadan okuma/borsa anahtarını yok sayma, çoklu anahtarda dosyayı değiştirmeden durma. Windows masaüstüne buluttan erişim bulunmuyor; Windows kurulum testi kullanıcı cihazında yapılacaktır.

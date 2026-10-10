@@ -11,18 +11,23 @@
   },
   {
     "path": "README_TR.md",
-    "bytes": 5633,
-    "sha256": "4b9b825963d544dbf08376bb51d1a96744fb6876198a86411c69783e4792c32a"
+    "bytes": 6391,
+    "sha256": "361cfab4053f1e833f80dea03e27af6f446547729d8fbdb92029c7f8459ccbfb"
   },
   {
     "path": "VALIDATION.md",
-    "bytes": 2007,
-    "sha256": "30d8224dc0387adce54a90ab82d4d0011f12adf95f7901cf8b115de1b1ee7b71"
+    "bytes": 2331,
+    "sha256": "6eba04699a71e2bd58f600184d338768e8904f39ac716ee8acd8509bb0291f3b"
   },
   {
     "path": "batch_test_results.json",
     "bytes": 15320,
     "sha256": "49eae8500efcc562012453127b715e635e785e316e2907b1b268031aca936eb4"
+  },
+  {
+    "path": "configure_key.py",
+    "bytes": 2961,
+    "sha256": "fb914af823fc15605951b1af7e4fdba5bb8a2dccb2b371b98d2938bf3941eeac"
   },
   {
     "path": "dashboard.html",
@@ -526,8 +531,8 @@
   },
   {
     "path": "install_windows.ps1",
-    "bytes": 8372,
-    "sha256": "1ec02276f648572c0fbf43ef51302bc3b3abf8367e119ad5e04ef9449ae5c70a"
+    "bytes": 9148,
+    "sha256": "dcae13246eb89ba325291a292c81f87d16588537a090fdce626f653d12b1bf76"
   },
   {
     "path": "pararadar.py",
@@ -543,6 +548,11 @@
     "path": "stop_windows.ps1",
     "bytes": 360,
     "sha256": "671a1b4018f95d587e1666a037b89167073c1f788b75deb23d8ab7c013f1336b"
+  },
+  {
+    "path": "test_key_discovery.py",
+    "bytes": 1941,
+    "sha256": "eb3ce5e78af0ae5f0ec6240f00da697a08833797487e293f8cc30a1d0a171272"
   },
   {
     "path": "test_regression.py",

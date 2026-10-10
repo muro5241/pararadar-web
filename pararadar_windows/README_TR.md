@@ -102,3 +102,7 @@ kurulum betiği Windows makinesinde henüz çalıştırılmadı. Orijinal Window
 orijinal karanlık video hatasının dosya içindeki nedeni teşhis edildiği iddia edilmez.
 Yeni üretim yolu, görseli bir kez oluşturup FFmpeg ile kodlar; doğrulanamayan MP4
 başarılı çıktı olarak kabul edilmez.
+
+## Masaüstündeki NVIDIA anahtarını otomatik bulma
+
+Kurucu proje klasörünü, Windows masaüstünü ve OneDrive Desktop/Masaüstü klasörlerinin doğrudan dosyalarını kontrol eder. `.env`, adında key/anahtar/nvidia bulunan TXT/JSON dosyaları ve main.py/pararadar_hizli.py içindeki sabit NVIDIA anahtarları desteklenir. Eski Python dosyaları çalıştırılmaz. Yalnızca nvapi- biçimindeki NVIDIA anahtarı seçilir; borsa anahtarları kullanılmaz. Birden fazla farklı anahtarda seçim yapılmadan kurulum durur. Anahtar sadece yerel pararadar_service/.env içine kaydedilir; ekrana, rapora veya GitHub’a aktarılmaz. Gerçek API erişimi ilk tam video üretiminde sınanır. Bu Windows adımı bulut ortamında çalıştırılmamıştır.
