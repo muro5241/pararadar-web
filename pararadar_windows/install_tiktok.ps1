@@ -1,4 +1,4 @@
-param([string]$ProjectPath = 'C:\Users\murat\OneDrive\Masaüstü\kripto_borsa_bot')
+﻿param([string]$ProjectPath = 'C:\Users\murat\OneDrive\Masaüstü\kripto_borsa_bot')
 $ErrorActionPreference = 'Stop'
 $Target = Join-Path $ProjectPath 'pararadar_service'
 $Python = Join-Path $Target '.venv\Scripts\python.exe'
